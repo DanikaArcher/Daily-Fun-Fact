@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#FBF6EC" />
+  <title>Daily Deck · one fact a day</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,400..800,100&family=Nunito:wght@400;600;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main id="app">
+    <!-- Shuffle + fan scene -->
+    <section id="stage" aria-label="A deck of cards being shuffled">
+      <div class="blob" aria-hidden="true"></div>
+      <h1 class="pick" aria-live="polite">
+        <span>Pick</span><span>a</span><span>card</span>
+      </h1>
+      <p class="status" id="status">shuffling…</p>
+      <div id="cards"></div>
+    </section>
+
+    <!-- Revealed card -->
+    <section id="reveal" hidden>
+      <div class="rc" id="rc">
+        <div class="rc-inner">
+          <div class="rc-face rc-back card-back"></div>
+          <div class="rc-face rc-front" id="rcFront"></div>
+        </div>
+      </div>
+      <div class="after" id="after">
+        <button class="source-btn" id="sourceBtn" aria-expanded="false" aria-controls="sourcePanel">View source</button>
+        <div class="source-panel" id="sourcePanel" hidden></div>
+        <p class="note" id="note"></p>
+        <button class="archive-btn" hidden>Past cards</button>
+      </div>
+    </section>
+
+    <!-- After day 54 -->
+    <section id="finished" hidden>
+      <div class="card-back done-card" aria-hidden="true"></div>
+      <h2>Congrats! You've finished this deck!</h2>
+      <p>Time to play a new game :)</p>
+    </section>
+
+    <!-- Archive of past days -->
+    <section id="archive" class="sheet" hidden aria-label="Past cards">
+      <header class="sheet-head">
+        <h2>Past cards</h2>
+        <button class="icon-btn" id="archiveClose" aria-label="Close past cards">✕</button>
+      </header>
+      <p class="sheet-sub">Missed a day? Tap a face-down card to turn it over.</p>
+      <div class="archive-grid" id="archiveGrid"></div>
+    </section>
+
+    <!-- Single past card -->
+    <section id="viewer" class="sheet" hidden aria-label="Past card">
+      <header class="sheet-head">
+        <button class="icon-btn" id="viewerBack" aria-label="Back to past cards">‹</button>
+        <h2>Past card</h2>
+        <span class="icon-btn" aria-hidden="true" style="visibility:hidden"></span>
+      </header>
+      <div class="viewer-body">
+        <div class="rc" id="vrc">
+          <div class="rc-inner">
+            <div class="rc-face rc-back card-back"></div>
+            <div class="rc-face rc-front" id="vFront"></div>
+          </div>
+        </div>
+        <button class="source-btn" id="vSourceBtn" aria-expanded="false" aria-controls="vSourcePanel">View source</button>
+        <div class="source-panel" id="vSourcePanel" hidden></div>
+      </div>
+    </section>
+
+    <footer class="counter" id="counter" hidden>
+      <span class="pill" id="counterText">1 of 54</span>
+      <span class="left" id="counterLeft"></span>
+    </footer>
+
+    <!-- Demo-only controls: remove before going live -->
+    <nav class="demo" id="demo" aria-label="Demo controls">
+      <span>demo</span>
+      <button data-act="replay">Replay</button>
+      <button data-act="prev">‹ Day</button>
+      <button data-act="next">Day ›</button>
+      <button data-act="reset">Reset</button>
+    </nav>
+  </main>
+  <script src="art.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
